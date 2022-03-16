@@ -7,14 +7,14 @@ for subject=subjects
     subjectdir = fullfile(['/path/to/analyses/ssrt/firstlevel-ssrt/sub-' num2str(subject) '/ses-01']);
     cd(subjectdir);
     confounds = tdfread(['sub-' num2str(subject) '_ses-01_task-ssrt_dir-AP_desc-confounds_timeseries.tsv']);
-    x=confounds.trans_x;
-    y=confounds.trans_y;
-    z=confounds.trans_z;
-    roll=confounds.rot_x;
+    x=confounds.rot_x;
+    y=confounds.rot_y;
+    z=confounds.rot_z;
+    roll=confounds.trans_x;
     pitch=confounds.trans_y;
-    yaw=confounds.rot_z;
-    realign = horzcat(x,y,z,roll,pitch,yaw);
-    writematrix(realign, 'SSRT_Realign_AP.txt')
+    yaw=confounds.trans_z;
+    realignAP = horzcat(x,y,z,roll,pitch,yaw);
+    writematrix(realignAP, 'SSRT_Realign_AP.txt')
 end
 
 study = '/path/to/analyses/ssrt';
@@ -26,12 +26,12 @@ for subject=subjects
     subjectdir = fullfile(['/path/to/analyses/ssrt/firstlevel-ssrt/sub-' num2str(subject) '/ses-01']);
     cd(subjectdir);
     confounds = tdfread(['sub-' num2str(subject) '_ses-01_task-ssrt_dir-PA_desc-confounds_timeseries.tsv']);
-    x=confounds.trans_x;
-    y=confounds.trans_y;
-    z=confounds.trans_z;
-    roll=confounds.rot_x;
+    x=confounds.rot_x;
+    y=confounds.rot_y;
+    z=confounds.rot_z;
+    roll=confounds.trans_x;
     pitch=confounds.trans_y;
-    yaw=confounds.rot_z;
-    realign = horzcat(x,y,z,roll,pitch,yaw);
-    writematrix(realign, 'SSRT_Realign_PA.txt')
+    yaw=confounds.trans_z;
+    realignPA = horzcat(x,y,z,roll,pitch,yaw);
+    writematrix(realignPA, 'SSRT_Realign_PA.txt')
 end
